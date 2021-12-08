@@ -322,19 +322,17 @@ void shabby_shell(const char * tty_name)
                             int a;
                             wait(&a);
 		            	} else{
+		            		proc_parity_check(argvs[1][0]);
 		            		execv(argvs[1][0], argvs[1]);
 		            	}
 		            }
 				}
-				// if(pid != 0) {
-				// 	int s;
-			 //        wait(&s);
-				// }
 				int s;
 				wait(&s);
 										
 			}
 			else {	/* child */
+			    proc_parity_check(argvs[0][0]);
 				execv(argvs[0][0], argvs[0]);
 			}
 		}

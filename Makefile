@@ -37,7 +37,9 @@ OBJS		= kernel/kernel.o kernel/start.o kernel/main.o\
 			mm/main.o mm/forkexit.o mm/exec.o\
 			fs/main.o fs/open.o fs/misc.o fs/read_write.o\
 			fs/link.o\
-			fs/disklog.o
+			fs/disklog.o\
+			kernel/check.o
+
 LOBJS		=  lib/syscall.o\
 			lib/printf.o lib/vsprintf.o\
 			lib/string.o lib/misc.o\
@@ -122,6 +124,9 @@ kernel/protect.o: kernel/protect.c
 	$(CC) $(CFLAGS) -o $@ $<
 
 kernel/proc.o: kernel/proc.c
+	$(CC) $(CFLAGS) -o $@ $<
+
+kernel/check.o: kernel/check.c
 	$(CC) $(CFLAGS) -o $@ $<
 
 lib/printf.o: lib/printf.c

@@ -181,6 +181,9 @@ enum msgtype {
 	/* FS & MM */
 	FORK, EXIT,
 
+	/* ALLOC & FREE */
+	ALLOC, FREE,
+
 	/* TTY, SYS, FS, MM, etc */
 	SYSCALL_RET,
 
@@ -211,7 +214,11 @@ enum msgtype {
 #define	RETVAL		u.m3.m3i1
 #define	STATUS		u.m3.m3i1
 
-
+/** *****************************************
+ * ALLLOC & FREE
+*********************************************/
+#define MM_ADDR		u.m3.m3p1
+#define MM_SIZE		u.m3.m3l1
 
 
 
@@ -291,6 +298,32 @@ enum msgtype {
 
 #define	NR_DEFAULT_FILE_SECTS	2048 /* 2048 * 512 = 1MB */
 
+/** ************************************************
+ * ALLOC & FREE
+* **************************************************/
+// 可分配页数
+#define PAGE_CNT	1024
+// 初始地址 28M
+#define ALLOC_BASE	0x1c00000
+// 页的大小 4K
+#define PAGE_SIZE	4096
+// 可分配大小 4M
+#define ALLOC_SIZE	1024 * 4096
 
+// BUDDY伙伴系统
+// 结点属性
+#define BD_NONE		0
+#define BD_FREE		1
+#define BD_SPLIT	2
+#define BD_OCCUPIED	3
+
+// 结点个数 2^0P -> 2^10P: 2^11 - 1 = 2047
+#define NODE_CNT	2047
+
+// 空地址
+#define NULL		0
+
+#define FREE_FAILURE    0
+#define FREE_SUCCESS    1
 
 #endif /* _ORANGES_CONST_H_ */

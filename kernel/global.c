@@ -20,6 +20,7 @@
 #include "global.h"
 #include "proto.h"
 
+PUBLIC	u8			nodes[NODE_CNT];
 
 PUBLIC	struct proc proc_table[NR_TASKS + NR_PROCS];
 

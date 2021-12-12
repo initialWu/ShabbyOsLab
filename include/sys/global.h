@@ -46,6 +46,9 @@ extern	u8 *			mmbuf;
 extern	const int		MMBUF_SIZE;
 EXTERN	int			memory_size;
 
+/* ALLOC & FREE */
+extern u8			nodes[];
+
 /* FS */
 EXTERN	struct file_desc	f_desc_table[NR_FILE_DESC];
 EXTERN	struct inode		inode_table[NR_INODE];

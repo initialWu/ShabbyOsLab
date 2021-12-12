@@ -124,6 +124,14 @@ PUBLIC int kernel_main()
 
 	p_proc_ready	= proc_table;
 
+	// ALLOC & FREE
+	// 初始化二叉树结点
+	for(int i = 0; i < NODE_CNT; ++i)
+	{
+		nodes[i] = BD_NONE;
+	}
+	nodes[0] = BD_FREE;
+
 	init_clock();
         init_keyboard();
 
@@ -366,6 +374,10 @@ void Init()
 	/* extract `cmd.tar' */
 	untar("/cmd.tar");
 			
+	// ALLOC & FREE Test
+	printf("Alloc & Free Test:\n");
+	void* addr1 = alloc(256 * 4096);
+	free(addr1);
 
 	char * tty_list[] = {"/dev_tty1", "/dev_tty2"};
 

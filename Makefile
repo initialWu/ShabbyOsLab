@@ -38,14 +38,16 @@ OBJS		= kernel/kernel.o kernel/start.o kernel/main.o\
 			fs/main.o fs/open.o fs/misc.o fs/read_write.o\
 			fs/link.o\
 			fs/disklog.o\
-			kernel/check.o
+			kernel/check.o\
+			mm/alloc.o
 
 LOBJS		=  lib/syscall.o\
 			lib/printf.o lib/vsprintf.o\
 			lib/string.o lib/misc.o\
 			lib/open.o lib/read.o lib/write.o lib/close.o lib/unlink.o\
 			lib/getpid.o lib/stat.o\
-			lib/fork.o lib/exit.o lib/wait.o lib/exec.o
+			lib/fork.o lib/exit.o lib/wait.o lib/exec.o\
+			lib/alloc.o
 DASMOUTPUT	= kernel.bin.asm
 
 # All Phony Targets
@@ -174,6 +176,10 @@ lib/getpid.o: lib/getpid.c
 lib/syslog.o: lib/syslog.c
 	$(CC) $(CFLAGS) -o $@ $<
 
+# FORK & ALLOC
+lib/alloc.o: lib/alloc.c
+	$(CC) $(CFLAGS) -o $@ $<
+
 lib/fork.o: lib/fork.c
 	$(CC) $(CFLAGS) -o $@ $<
 
@@ -190,6 +196,10 @@ lib/stat.o: lib/stat.c
 	$(CC) $(CFLAGS) -o $@ $<
 
 mm/main.o: mm/main.c
+	$(CC) $(CFLAGS) -o $@ $<
+
+# ALLOC & FREE
+mm/alloc.o: mm/alloc.c
 	$(CC) $(CFLAGS) -o $@ $<
 
 mm/forkexit.o: mm/forkexit.c

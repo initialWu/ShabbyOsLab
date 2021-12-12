@@ -58,6 +58,13 @@ PUBLIC void task_mm()
 			do_wait();
 			reply = 0;
 			break;
+		// FREE & ALLOC
+		case ALLOC:
+			mm_msg.RETVAL = do_alloc();
+			break;
+		case FREE:
+			mm_msg.RETVAL = do_free();
+			break;
 		default:
 			dump_msg("MM::unknown msg", &mm_msg);
 			assert(0);

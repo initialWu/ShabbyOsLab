@@ -13,7 +13,7 @@ LDFLAGS		= -Ttext 0x1000
 DASMFLAGS	= -D
 LIB		= ../lib/orangescrt.a
 #BIN		= ls echo pwd sum procA procB ps queue stest
-BIN		= echo pwd pwd1 calendar guess attack ls bufof parity_check
+BIN		= echo pwd pwd1 calendar guess attack ls bufof parity_check allocfree
 
 # All Phony Targets
 .PHONY : everything final clean realclean disasm all install
@@ -88,6 +88,12 @@ parity_check.o: parity_check.c ../include/type.h ../include/stdio.h
 	$(CC) $(CFLAGS) -o $@ $<
 
 parity_check: parity_check.o start.o $(LIB)
+	$(LD) $(LDFLAGS) -o $@ $? $(LIB)
+
+allocfree.o: allocfree.c ../include/type.h ../include/stdio.h
+	$(CC) $(CFLAGS) -o $@ $<
+
+allocfree : allocfree.o start.o $(LIB)
 	$(LD) $(LDFLAGS) -o $@ $? $(LIB)
 
 # sum.o: sum.c ../include/type.h ../include/stdio.h

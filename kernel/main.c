@@ -375,9 +375,9 @@ void Init()
 	untar("/cmd.tar");
 			
 	// ALLOC & FREE Test
-	printf("Alloc & Free Test:\n");
-	void* addr1 = alloc(256 * 4096);
-	free(addr1);
+	// printf("Alloc & Free Test:\n");
+	// void* addr1 = alloc(256 * 4096);
+	// free(addr1);
 
 	char * tty_list[] = {"/dev_tty1", "/dev_tty2"};
 

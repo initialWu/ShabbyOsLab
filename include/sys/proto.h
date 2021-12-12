@@ -106,6 +106,12 @@ PUBLIC void		task_mm();
 PUBLIC int		alloc_mem(int pid, int memsize);
 PUBLIC int		free_mem(int pid);
 
+/* mm/alloc.c */
+PUBLIC int		do_alloc();
+
+/* mm/alloc.c */
+PUBLIC int		do_free();
+
 /* mm/forkexit.c */
 PUBLIC int		do_fork();
 PUBLIC void		do_exit(int status);

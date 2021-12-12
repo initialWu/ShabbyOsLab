@@ -126,6 +126,12 @@ PUBLIC	int	unlink		(const char *pathname);
 /* lib/getpid.c */
 PUBLIC int	getpid		();
 
+/* lib/alloc.c */
+PUBLIC void* alloc		(unsigned int size);
+
+/* lib/alloc.c */
+PUBLIC int	free		(void * addr);
+
 /* lib/fork.c */
 PUBLIC int	fork		();
 
